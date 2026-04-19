@@ -1,17 +1,20 @@
-// Landing page handling
-document.getElementById('enter-btn').addEventListener('click', function() {
-    document.getElementById('landing').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
+// Landing page click handler
+document.getElementById('landing').addEventListener('click', function() {
+    // Hide landing
+    document.getElementById('landing').classList.add('hidden');
+    
+    // Show main content
+    document.getElementById('main-content').classList.remove('hidden');
     
     // Play music
     const music = document.getElementById('bg-music');
     if (music) {
-        music.volume = 0.5;
-        music.play().catch(e => console.log('Music autoplay blocked'));
+        music.volume = 0.6;
+        music.play().catch(e => console.log('Music autoplay blocked:', e));
     }
     
-    // Start floating animations
-    createFloatingElements();
+    // Start floating decorations
+    createFloatingDecorations();
     
     // Start countdown
     startCountdown();
@@ -36,7 +39,6 @@ function startCountdown() {
         const diff = nextBirthday - now;
         
         if (diff <= 0) {
-            // Birthday has passed, recalculate for next year
             location.reload();
             return;
         }
@@ -46,41 +48,55 @@ function startCountdown() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
     }
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
 
-// Floating animations
-function createFloatingElements() {
-    const container = document.getElementById('floating-elements');
-    const elements = ['💖', '💕', '💗', '❤️', '💘', '⭐', '✨', '🌟', '💫', '🎉', '🎊', '🩷', '🩶'];
+// Floating decorations
+function createFloatingDecorations() {
+    const container = document.getElementById('floating-decorations');
+    if (!container) return;
     
-    function createFloatingElement() {
+    const decorations = ['💖', '💕', '💗', '❤️', '💘', '⭐', '✨', '🌟', '💫', '🎉', '🎊', '🩷', '🩶', '🧡', '💝'];
+    
+    function createItem() {
+        if (!document.getElementById('floating-decorations')) return;
+        
         const el = document.createElement('div');
-        el.className = 'floating-' + (Math.random() > 0.5 ? 'heart' : Math.random() > 0.5 ? 'star' : 'sparkle');
-        el.textContent = elements[Math.floor(Math.random() * elements.length)];
+        el.className = 'floating-item';
+        el.textContent = decorations[Math.floor(Math.random() * decorations.length)];
         el.style.left = Math.random() * 100 + '%';
-        el.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        el.style.animationDuration = (Math.random() * 6 + 7) + 's';
         el.style.animationDelay = Math.random() * 5 + 's';
-        el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        el.style.fontSize = (Math.random() * 15 + 15) + 'px';
         container.appendChild(el);
         
         setTimeout(() => {
             el.remove();
-        }, 10000);
+        }, 12000);
     }
     
-    // Create multiple elements initially
-    for (let i = 0; i < 15; i++) {
-        setTimeout(createFloatingElement, Math.random() * 3000);
+    // Initial batch
+    for (let i = 0; i < 12; i++) {
+        setTimeout(createItem, Math.random() * 2000);
     }
     
-    // Keep creating new elements
-    setInterval(createFloatingElement, 800);
+    // Continuous
+    setInterval(createItem, 600);
+}
+
+// Also run on wish pages
+if (document.getElementById('floating-decorations')) {
+    createFloatingDecorations();
 }
