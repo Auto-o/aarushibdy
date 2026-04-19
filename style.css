@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 50%, #ff69b4 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#landing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 50%, #ff69b4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.landing-content {
+    text-align: center;
+}
+
+.landing-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: #ff1493;
+    text-shadow: 3px 3px 0px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    margin-bottom: 20px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.landing-content p {
+    font-size: 1.5rem;
+    color: #c71585;
+    margin-bottom: 30px;
+}
+
+#enter-btn {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+}
+
+#enter-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.7);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#main-content {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart, .floating-star, .floating-sparkle {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp 8s linear infinite;
+    opacity: 0;
+}
+
+.floating-heart {
+    animation: floatHeart 8s linear infinite;
+}
+
+.floating-star {
+    animation: floatStar 6s linear infinite;
+    font-size: 1.5rem;
+}
+
+.floating-sparkle {
+    animation: floatSparkle 5s linear infinite;
+    font-size: 1rem;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatStar {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes floatSparkle {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        transform: rotate(180deg) scale(1);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(0);
+        opacity: 0;
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.raccoon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    animation: raccoonBounce 3s ease-in-out infinite;
+}
+
+.raccoon-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(139, 115, 85, 0.3));
+}
+
+@keyframes raccoonBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.cake-gif {
+    margin: 20px auto;
+    max-width: 250px;
+}
+
+.cake-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+    animation: cakeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes cakeGlow {
+    0% { box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4); }
+    100% { box-shadow: 0 10px 60px rgba(255, 105, 180, 0.7); }
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 10vw, 4rem);
+    color: #fff;
+    text-shadow: 3px 3px 0 #ff1493, -1px -1px 0 #ff1493, 1px -1px 0 #ff1493, -1px 1px 0 #ff1493;
+    margin: 30px 0;
+}
+
+.title .name {
+    color: #ff1493;
+    display: block;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 4vw, 30px);
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.9));
+    padding: clamp(15px, 4vw, 25px);
+    border-radius: 20px;
+    min-width: clamp(70px, 18vw, 100px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    border: 3px solid #ff69b4;
+}
+
+.countdown-item span {
+    display: block;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-weight: 700;
+    color: #ff1493;
+}
+
+.countdown-item label {
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    color: #c71585;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.birthday-text {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #c71585;
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: clamp(15px, 5vw, 40px);
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 600;
+    padding: clamp(12px, 3vw, 18px) clamp(25px, 6vw, 40px);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn.Tama {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+}
+
+.btn.Tuli {
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+}
+
+.btn:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.7);
+}
+
+@media (max-width: 480px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 80%;
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    .raccoon {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .cake-gif {
+        max-width: 300px;
+    }
+}
