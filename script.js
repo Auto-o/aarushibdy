@@ -273,3 +273,17 @@ function createFloatingDecorations() {
 if (!document.getElementById('landing') && document.getElementById('floating-decorations')) {
     createFloatingDecorations();
 }
+
+// Global interaction listener for audio
+let musicStarted = false;
+document.body.addEventListener('click', function() {
+    if (!musicStarted) {
+        const globalMusic = document.getElementById('bg-music');
+        if (globalMusic && globalMusic.paused) {
+            globalMusic.volume = 0.6;
+            globalMusic.play().then(() => {
+                musicStarted = true;
+            }).catch(e => console.log('Music autoplay blocked:', e));
+        }
+    }
+});
