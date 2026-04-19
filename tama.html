@@ -6,11 +6,14 @@
     <title>Tama's Wish for Aarushi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="wish.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+    <!-- Animated JS Background -->
+    <canvas id="bg-canvas"></canvas>
+    
     <div class="wish-display-page">
         <!-- Floating Decorations -->
         <div class="floating-decorations" id="floating-decorations"></div>
@@ -22,44 +25,6 @@
         </a>
         
         <div class="container">
-            <!-- Raccoon -->
-            <div class="raccoon-container">
-                <svg viewBox="0 0 200 200" class="raccoon-svg">
-                    <defs>
-                        <linearGradient id="raccoonGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#9B8B7A"/>
-                            <stop offset="100%" style="stop-color:#6B5B4A"/>
-                        </linearGradient>
-                    </defs>
-                    <ellipse cx="100" cy="125" rx="55" ry="45" fill="url(#raccoonGrad2)"/>
-                    <ellipse cx="100" cy="135" rx="42" ry="32" fill="#8B7B6A"/>
-                    <ellipse cx="70" cy="90" rx="32" ry="28" fill="url(#raccoonGrad2)"/>
-                    <ellipse cx="130" cy="90" rx="32" ry="28" fill="url(#raccoonGrad2)"/>
-                    <ellipse cx="70" cy="90" rx="22" ry="20" fill="#A08B7A"/>
-                    <ellipse cx="130" cy="90" rx="22" ry="20" fill="#A08B7A"/>
-                    <circle cx="85" cy="85" r="14" fill="white"/>
-                    <circle cx="115" cy="85" r="14" fill="white"/>
-                    <circle cx="85" cy="85" r="7" fill="#2D2D2D"/>
-                    <circle cx="115" cy="85" r="7" fill="#2D2D2D"/>
-                    <circle cx="87" cy="83" r="2.5" fill="white"/>
-                    <circle cx="117" cy="83" r="2.5" fill="white"/>
-                    <ellipse cx="100" cy="100" rx="10" ry="6" fill="#2D2D2D"/>
-                    <path d="M 94 106 Q 100 112 106 106" stroke="#2D2D2D" stroke-width="2.5" fill="none"/>
-                    <path d="M 58 72 Q 45 50 35 55" stroke="#8B7B6A" stroke-width="10" fill="none" stroke-linecap="round"/>
-                    <path d="M 142 72 Q 155 50 165 55" stroke="#8B7B6A" stroke-width="10" fill="none" stroke-linecap="round"/>
-                    <ellipse cx="32" cy="48" rx="14" ry="18" fill="url(#raccoonGrad2)"/>
-                    <ellipse cx="168" cy="48" rx="14" ry="18" fill="url(#raccoonGrad2)"/>
-                    <ellipse cx="32" cy="48" rx="7" ry="10" fill="#A08B7A"/>
-                    <ellipse cx="168" cy="48" rx="7" ry="10" fill="#A08B7A"/>
-                    <path d="M 25 145 Q 5 135 0 100" stroke="#8B7B6A" stroke-width="18" fill="none" stroke-linecap="round"/>
-                    <path d="M 175 145 Q 195 135 200 100" stroke="#8B7B6A" stroke-width="18" fill="none" stroke-linecap="round"/>
-                    <ellipse cx="5" cy="95" rx="14" ry="22" fill="#8B7B6A" stroke="#5B4B3A" stroke-width="2"/>
-                    <ellipse cx="195" cy="95" rx="14" ry="22" fill="#8B7B6A" stroke="#5B4B3A" stroke-width="2"/>
-                    <path d="M 0 82 L 10 95 M 0 95 L 10 82" stroke="#5B4B3A" stroke-width="2.5"/>
-                    <path d="M 190 82 L 200 95 M 190 95 L 200 82" stroke="#5B4B3A" stroke-width="2.5"/>
-                </svg>
-            </div>
-            
             <!-- Title -->
             <h1 class="page-title">
                 <span class="title-icon">💕</span>
@@ -72,7 +37,7 @@
                 <!-- Photo Section - Replace src with your photo -->
                 <div class="photo-section">
                     <div class="photo-frame">
-                        <img id="tama-photo" src="tama.jpg" alt="Tama's photo for Aarushi" onerror="this.style.display='none'; document.getElementById('no-photo').style.display='block';">
+                        <img id="tama-photo" src="tama.jpg" alt="Tama's photo for Aarushi" onerror="this.style.display='none'; document.getElementById('no-photo').style.display='flex';">
                         <div id="no-photo" class="no-photo" style="display: none;">
                             <span class="no-photo-icon">📷</span>
                             <span>Add Photo Here</span>

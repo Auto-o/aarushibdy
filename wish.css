@@ -1,256 +1,194 @@
 /* ============================================
    WISH DISPLAY PAGES (Tama & Tuli)
+   DARK MODE GLASSMORPHISM
    ============================================ */
 
 .wish-display-page {
     min-height: 100vh;
-    padding: 30px 20px;
+    padding: 60px 20px;
     position: relative;
-    background: linear-gradient(135deg, #FFF0F5 0%, #FFB6C1 50%, #FF69B4 100%);
+    background-color: var(--bg-dark);
+    background-image: url('bg.png');
+    background-size: 110% 110%;
+    animation: bgPan 20s infinite alternate ease-in-out;
     background-attachment: fixed;
+    z-index: 1;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .container {
-    max-width: 550px;
+    max-width: 650px;
     margin: 0 auto;
-    text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 /* Back Button */
 .back-button {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 25px;
+    left: 25px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    background: linear-gradient(135deg, #FF69B4, #FF1493);
-    color: white;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(20, 10, 30, 0.7);
+    backdrop-filter: blur(10px);
+    color: #fff;
     text-decoration: none;
     border-radius: 30px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'VT323', monospace;
     font-size: 0.95rem;
-    font-weight: 600;
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
-    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 100;
 }
 
 .back-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.6);
+    transform: translateY(-3px) translateX(-3px);
+    background: rgba(255, 20, 147, 0.2);
+    border-color: var(--neon-pink);
+    box-shadow: 0 12px 30px rgba(255, 20, 147, 0.3);
 }
 
-.back-icon {
-    font-size: 1.1rem;
-}
-
-/* Floating Decorations */
-.floating-decorations {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.floating-item {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: floatRise 10s linear infinite;
-    opacity: 0;
-}
-
-@keyframes floatRise {
-    0% {
-        transform: translateY(100vh) rotate(0deg) scale(0.5);
-        opacity: 0;
-    }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% {
-        transform: translateY(-100px) rotate(360deg) scale(1);
-        opacity: 0;
-    }
-}
-
-/* Raccoon */
-.raccoon-container {
-    width: clamp(100px, 22vw, 140px);
-    height: clamp(100px, 22vw, 140px);
-    margin: 0 auto 20px;
-    animation: raccoonFloat 4s ease-in-out infinite;
-}
-
-.raccoon-svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 12px 25px rgba(139, 123, 106, 0.4));
-}
-
-@keyframes raccoonFloat {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
-}
+.back-icon { font-size: 1.1rem; }
 
 /* Page Title */
 .page-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 8vw, 3rem);
-    color: white;
-    text-shadow: 2px 2px 0 #FF1493;
-    margin-bottom: 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-pink), 0 0 25px var(--neon-purple);
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    text-align: center;
 }
 
-.title-icon {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-}
+.title-icon { font-size: clamp(1.8rem, 6vw, 2.5rem); filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
 
-/* Wish Card */
+/* Wish Card (Glassmorphism) */
 .wish-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(255, 245, 245, 0.97));
-    border-radius: 25px;
-    padding: clamp(20px, 5vw, 35px);
-    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
-    border: 4px solid #FF69B4;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 35px;
+    padding: clamp(30px, 6vw, 50px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink), var(--neon-blue));
 }
 
 /* Photo Section */
-.photo-section {
-    margin-bottom: 25px;
-}
+.photo-section { margin-bottom: 40px; }
 
 .photo-frame {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 10px 35px rgba(255, 105, 180, 0.35);
-    border: 5px solid #FFB6C1;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 20, 147, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #FFE4E1, #FFC0CB);
+    background: rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
 }
 
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.photo-frame:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 20, 147, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 20, 147, 0.4);
 }
+
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
 .no-photo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    color: #FF69B4;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    gap: 15px;
+    color: var(--text-muted);
+    font-family: 'VT323', monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
-.no-photo-icon {
-    font-size: 3rem;
-}
+.no-photo-icon { font-size: 3.5rem; opacity: 0.5; }
 
 /* Message Section */
-.message-section {
-    text-align: left;
-}
+.message-section { text-align: left; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
 
 .message-label {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.2rem, 4vw, 1.6rem);
-    color: #FF1493;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #FFB6C1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; gap: 10px;
 }
 
 .message-text {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.15rem);
-    color: #4A2C2A;
-    line-height: 1.7;
-}
-
-.message-text br {
-    line-height: 0.8;
+    font-family: 'VT323', monospace;
+    font-size: clamp(1.05rem, 3vw, 1.15rem);
+    color: #e2dceb;
+    line-height: 1.8;
+    font-weight: 300;
 }
 
 /* Card Hearts */
 .card-hearts {
-    margin-top: 25px;
+    margin-top: 35px;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    font-size: 1.5rem;
-    animation: heartBeat 2s ease-in-out infinite;
+    gap: 20px;
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 10px rgba(255,20,147,0.5));
 }
 
-.card-hearts span {
-    animation: heartPop 1.5s ease-in-out infinite;
-}
-
+.card-hearts span { animation: heartFloat 3s ease-in-out infinite; }
 .card-hearts span:nth-child(1) { animation-delay: 0s; }
-.card-hearts span:nth-child(2) { animation-delay: 0.2s; }
-.card-hearts span:nth-child(3) { animation-delay: 0.4s; }
-.card-hearts span:nth-child(4) { animation-delay: 0.6s; }
-.card-hearts span:nth-child(5) { animation-delay: 0.8s; }
+.card-hearts span:nth-child(2) { animation-delay: 0.4s; }
+.card-hearts span:nth-child(3) { animation-delay: 0.8s; }
+.card-hearts span:nth-child(4) { animation-delay: 1.2s; }
+.card-hearts span:nth-child(5) { animation-delay: 1.6s; }
 
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-@keyframes heartPop {
+@keyframes heartFloat {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-5px) scale(1.2); }
+    50% { transform: translateY(-10px) scale(1.1); }
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 480px) {
-    .back-button {
-        position: relative;
-        display: inline-flex;
-        margin-bottom: 20px;
-    }
-    
-    .page-title {
-        margin-top: 15px;
-    }
-    
-    .photo-frame {
-        max-width: 220px;
-    }
-}
-
-@media (min-width: 768px) {
-    .wish-display-page {
-        padding: 50px 30px;
-    }
-    
-    .container {
-        max-width: 600px;
-    }
-    
-    .photo-frame {
-        max-width: 320px;
-    }
+@media (max-width: 768px) {
+    .back-button { position: relative; top: 0; left: 0; display: inline-flex; margin-bottom: 30px; }
+    .message-section { padding: 20px; }
 }
